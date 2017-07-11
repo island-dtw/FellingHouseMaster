@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:id="@+id/view_unread"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/colorPrimary"
+            android:visibility="gone"
+            android:layout_width="4dp"
+            android:layout_height="4dp" />
+        <RadioButton
+            android:id="@+id/radio_friend_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:background="@drawable/riple_radiobutton" />
+    </FrameLayout>
+</LinearLayout>

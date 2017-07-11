@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId 'com.dtw.fellinghousemaster'
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk{
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a','x86', 'x86_64', 'mips', 'mips64'
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "14b7d97da5f8f3f1eb1e6af6", //JPush上注册的包名对应的appkey.
+        ]
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        kuan {}
+        yingyongbao {}
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name, JPUSH_CHANNEL: name]
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+
+                def fileName = "FellingHouse_V${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+}
+
+repositories{
+    flatDir{
+        dirs 'libs' //就是你放aar的目录地址
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
+    testCompile 'junit:junit:4.12'
+    //极光IM
+    compile 'cn.jiguang.sdk:jcore:1.1.2'
+    compile 'cn.jiguang.sdk:jmessage:2.2.0'
+    //Glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //微信分享
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/colorTranstarentPrimary">
+    <item>
+        <selector>
+            <item android:state_checked="true" android:drawable="@color/colorAccent"/>
+        </selector>
+    </item>
+</ripple>
