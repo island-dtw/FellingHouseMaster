@@ -5,6 +5,8 @@ package com.dtw.fellinghousemaster;
  */
 
 public class Config {
+    public static final String Url_MainSimpleProductList="http://192.168.18.8/product/simpleproductlist";
+
     public static final String MasterName="master";
 
     public static final String MobChina="86";

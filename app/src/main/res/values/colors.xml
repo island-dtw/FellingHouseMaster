@@ -7,4 +7,9 @@
     <color name="colorBlack">#666666</color>
     <color name="colorBlackDeap">#101010</color>
     <color name="colorhint">#aaaaaa</color>
+
+    <color name="swipeRefreshColor0">#7B68EE </color>
+    <color name="swipeRefreshColor1">#FF1493 </color>
+    <color name="swipeRefreshColor2">#7CFC00</color>
+    <color name="swipeRefreshColor3">#FFD700</color>
 </resources>

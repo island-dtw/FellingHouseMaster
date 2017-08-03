@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.dtw.fellinghousemaster.R;
 import com.dtw.fellinghousemaster.Utils.ScreenUtil;
 
@@ -92,10 +93,12 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
                     w=options.outWidth;
                     h=options.outHeight;
                 }
+                RequestOptions glideOptions = new RequestOptions()
+                        .error(R.drawable.nav_head)
+                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
                 Glide.with(context)
                         .load(((ImageContent)message.getContent()).getLocalThumbnailPath())
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .override(w,h)
+                        .apply(glideOptions)
                         .into(holder.img);
                 hideItem(holder);
                 holder.img.setVisibility(View.VISIBLE);

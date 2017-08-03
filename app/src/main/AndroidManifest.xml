@@ -23,7 +23,7 @@
         <activity android:name=".wxapi.WXEntryActivity"
             android:exported="true"/>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".View.Main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -46,6 +46,9 @@
             <!--android:theme="@style/AppTheme.NoActionBar"-->
             <!--android:screenOrientation="portrait"/>-->
         <activity android:name=".View.Setting.SettingActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.Detail.DetailActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
     </application>

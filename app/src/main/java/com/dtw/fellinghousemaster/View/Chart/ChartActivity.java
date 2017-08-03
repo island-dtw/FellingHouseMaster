@@ -2,6 +2,7 @@ package com.dtw.fellinghousemaster.View.Chart;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -97,7 +98,7 @@ public class ChartActivity extends BaseActivity implements ChartView, SoftKeyBoa
         keyBoardMoreItemBean.setImgResID(R.drawable.gallery);
         keyBoardMoreItemBean.setTitle("图库");
         Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
+        intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setAction(Intent.ACTION_GET_CONTENT);
         keyBoardMoreItemBean.setIntent(intent);
         keyBoardMoreItemBeanList.add(keyBoardMoreItemBean);
@@ -250,7 +251,7 @@ public class ChartActivity extends BaseActivity implements ChartView, SoftKeyBoa
         if (requestCode == Config.Request_Code_Request_Image) {
             if (resultCode == RESULT_OK) {
                 try {
-                    messageListMain.add(chartPresener.sendImageMessage(UriUtil.getBitmapFormUri(this, data.getData())));
+                    messageListMain.add(chartPresener.sendImageMessage(UriUtil.getFileFormUri(this, data.getData())));
                     messageListAdapter.notifyItemInserted(messageListMain.size() - 1);
                     recyclerView.scrollToPosition(messageListMain.size() - 1);
                 } catch (IOException e) {
